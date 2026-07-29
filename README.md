@@ -16,3 +16,9 @@ This repo will document the process.
 Base feels approachable for beginners while still being powerful enough for real applications.  
 
 I’m excited to keep learning and documenting everything here.
+
+### Understanding Public Variables
+
+When a variable is declared as `public`, Solidity automatically creates a getter function for it.
+
+This makes it easy to read data from the contract.
