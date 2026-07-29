@@ -57,3 +57,10 @@ Using modifiers like `onlyOwner` is one of the first security patterns every dev
 Mappings are like hash tables.  
 
 They are very useful for associating addresses with values such as balances, allowances, or user data.
+
+### Why Events + State Is Powerful
+
+State variables store the current data.  
+Events provide a history of what happened.
+
+Together they make contracts transparent and easy to integrate with frontends.
