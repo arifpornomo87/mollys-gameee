@@ -35,3 +35,7 @@ Understanding these helps write more efficient contracts.
 Events allow applications to react to what happens on-chain without constantly reading the contract state.
 
 They are also cheaper than storing extra data.
+
+### Understanding Constructors
+
+Constructors are optional, but very useful when you want to initialize important values at the moment the contract is created on Base.
