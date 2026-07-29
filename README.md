@@ -64,3 +64,10 @@ State variables store the current data.
 Events provide a history of what happened.
 
 Together they make contracts transparent and easy to integrate with frontends.
+
+### require vs assert
+
+- `require` → for input validation and expected conditions  
+- `assert` → for internal errors that should never happen  
+
+In most cases, `require` is what you will use.
