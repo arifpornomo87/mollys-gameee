@@ -22,3 +22,10 @@ I’m excited to keep learning and documenting everything here.
 When a variable is declared as `public`, Solidity automatically creates a getter function for it.
 
 This makes it easy to read data from the contract.
+
+### View vs Pure Functions
+
+- `view` → reads state but doesn’t modify it  
+- `pure` → doesn’t read or modify state  
+
+Understanding these helps write more efficient contracts.
