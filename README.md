@@ -10,3 +10,9 @@ I'm using this repository to organize everything related to Base — from basic 
 4. Gradually move into practical development  
 
 This repo will document the process.
+
+### First Impressions
+
+Base feels approachable for beginners while still being powerful enough for real applications.  
+
+I’m excited to keep learning and documenting everything here.
