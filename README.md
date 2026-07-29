@@ -51,3 +51,9 @@ Using modifiers like `onlyOwner` is one of the first security patterns every dev
 - Always emit an event when ownership changes
 - Check for the zero address
 - Consider using OpenZeppelin’s Ownable for production projects
+
+### Understanding Mappings
+
+Mappings are like hash tables.  
+
+They are very useful for associating addresses with values such as balances, allowances, or user data.
