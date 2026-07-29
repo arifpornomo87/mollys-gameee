@@ -29,3 +29,9 @@ This makes it easy to read data from the contract.
 - `pure` → doesn’t read or modify state  
 
 Understanding these helps write more efficient contracts.
+
+### Why Events Are Useful
+
+Events allow applications to react to what happens on-chain without constantly reading the contract state.
+
+They are also cheaper than storing extra data.
