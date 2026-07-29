@@ -39,3 +39,9 @@ They are also cheaper than storing extra data.
 ### Understanding Constructors
 
 Constructors are optional, but very useful when you want to initialize important values at the moment the contract is created on Base.
+
+### Why Access Control Matters
+
+Without proper access control, anyone could call sensitive functions.  
+
+Using modifiers like `onlyOwner` is one of the first security patterns every developer should learn.
