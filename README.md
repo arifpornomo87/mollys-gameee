@@ -45,3 +45,9 @@ Constructors are optional, but very useful when you want to initialize important
 Without proper access control, anyone could call sensitive functions.  
 
 Using modifiers like `onlyOwner` is one of the first security patterns every developer should learn.
+
+### Ownership Best Practices
+
+- Always emit an event when ownership changes
+- Check for the zero address
+- Consider using OpenZeppelin’s Ownable for production projects
