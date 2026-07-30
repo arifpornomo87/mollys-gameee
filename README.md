@@ -155,3 +155,9 @@ Learning them early is very important.
 Because it is a standard, any wallet, DEX, or protocol can interact with ERC20 tokens in a predictable way.
 
 This is one of the foundations of DeFi.
+
+### Understanding Allowance
+
+Allowance lets a contract (like a DEX) spend your tokens without taking full control of your wallet.
+
+This is a core mechanism in DeFi.
