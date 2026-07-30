@@ -77,3 +77,12 @@ In most cases, `require` is what you will use.
 Modifiers make your code cleaner and more secure by avoiding repeated require statements.
 
 They are one of the most important tools in Solidity.
+
+### Common Global Variables
+
+- `msg.sender` → who is calling the function  
+- `msg.value` → how much ETH was sent  
+- `block.timestamp` → current time  
+- `block.number` → current block number  
+
+These are used constantly in smart contracts.
