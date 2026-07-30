@@ -100,3 +100,10 @@ Both can be marked as payable.
 - `fallback()` → called when no other function matches  
 
 Both can be marked as payable.
+
+### When to Use receive and fallback
+
+- Use `receive()` if you mainly want to accept plain ETH transfers  
+- Use `fallback()` if you also want to handle unknown function calls  
+
+Many contracts implement both.
