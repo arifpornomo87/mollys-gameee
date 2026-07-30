@@ -150,3 +150,8 @@ You will see interfaces everywhere in DeFi (ERC20, ERC721, routers, oracles, etc
 
 Learning them early is very important.
 
+### Why ERC20 Matters
+
+Because it is a standard, any wallet, DEX, or protocol can interact with ERC20 tokens in a predictable way.
+
+This is one of the foundations of DeFi.
