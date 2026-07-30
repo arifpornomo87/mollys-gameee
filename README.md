@@ -138,3 +138,7 @@ Both are used frequently depending on the use case.
 Keep conditions clear and simple.  
 
 Complex nested if statements can make the code harder to read and more error-prone.
+
+### Why Use Enums
+
+Enums improve readability and reduce errors compared to using plain numbers for states.
