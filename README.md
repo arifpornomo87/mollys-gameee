@@ -71,3 +71,9 @@ Together they make contracts transparent and easy to integrate with frontends.
 - `assert` → for internal errors that should never happen  
 
 In most cases, `require` is what you will use.
+
+### Why Modifiers Are Useful
+
+Modifiers make your code cleaner and more secure by avoiding repeated require statements.
+
+They are one of the most important tools in Solidity.
