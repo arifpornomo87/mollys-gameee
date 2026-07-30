@@ -126,3 +126,9 @@ They are commonly used for users, orders, proposals, positions, and more.
 - **Mappings** → good for fast lookups by key  
 
 Both are used frequently depending on the use case.
+
+### Best Practices with Loops
+
+- Prefer mappings over arrays when you don’t need iteration  
+- Limit the maximum size of arrays  
+- Avoid loops that grow indefinitely  
