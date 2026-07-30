@@ -107,3 +107,9 @@ Both can be marked as payable.
 - Use `fallback()` if you also want to handle unknown function calls  
 
 Many contracts implement both.
+
+### Working with Addresses
+
+Addresses are fundamental in Solidity.  
+
+You will use them for owners, users, balances, approvals, and almost every interaction.
