@@ -113,3 +113,9 @@ Many contracts implement both.
 Addresses are fundamental in Solidity.  
 
 You will use them for owners, users, balances, approvals, and almost every interaction.
+
+### Why Structs Are Useful
+
+Structs help organize complex data.  
+
+They are commonly used for users, orders, proposals, positions, and more.
