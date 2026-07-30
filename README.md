@@ -161,3 +161,14 @@ This is one of the foundations of DeFi.
 Allowance lets a contract (like a DEX) spend your tokens without taking full control of your wallet.
 
 This is a core mechanism in DeFi.
+
+### Token Metadata
+
+A complete ERC20 usually includes:
+
+- `name`
+- `symbol`
+- `decimals`
+- `totalSupply`
+
+These help wallets display the token correctly.
