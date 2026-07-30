@@ -172,3 +172,9 @@ A complete ERC20 usually includes:
 - `totalSupply`
 
 These help wallets display the token correctly.
+
+### ERC20 Learning Summary
+
+You now understand the core structure of a fungible token.
+
+This knowledge is essential for building or interacting with almost any project on Base.
