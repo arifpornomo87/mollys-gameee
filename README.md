@@ -1,3 +1,4 @@
+
 # Starting with Base
 
 I'm using this repository to organize everything related to Base — from basic concepts to more advanced topics as I progress.
@@ -142,3 +143,10 @@ Complex nested if statements can make the code harder to read and more error-pro
 ### Why Use Enums
 
 Enums improve readability and reduce errors compared to using plain numbers for states.
+
+### Interfaces in Practice
+
+You will see interfaces everywhere in DeFi (ERC20, ERC721, routers, oracles, etc.).
+
+Learning them early is very important.
+
