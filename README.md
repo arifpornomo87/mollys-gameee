@@ -93,3 +93,10 @@ These are used constantly in smart contracts.
 - `fallback()` → called when no other function matches  
 
 Both can be marked as payable.
+
+### receive vs fallback
+
+- `receive()` → called when ETH is sent with empty calldata  
+- `fallback()` → called when no other function matches  
+
+Both can be marked as payable.
