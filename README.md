@@ -119,3 +119,10 @@ You will use them for owners, users, balances, approvals, and almost every inter
 Structs help organize complex data.  
 
 They are commonly used for users, orders, proposals, positions, and more.
+
+### Arrays vs Mappings
+
+- **Arrays** → good for lists and iteration  
+- **Mappings** → good for fast lookups by key  
+
+Both are used frequently depending on the use case.
