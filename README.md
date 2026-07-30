@@ -86,3 +86,10 @@ They are one of the most important tools in Solidity.
 - `block.number` → current block number  
 
 These are used constantly in smart contracts.
+
+### receive vs fallback
+
+- `receive()` → called when ETH is sent with empty calldata  
+- `fallback()` → called when no other function matches  
+
+Both can be marked as payable.
