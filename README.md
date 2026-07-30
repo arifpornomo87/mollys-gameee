@@ -132,3 +132,9 @@ Both are used frequently depending on the use case.
 - Prefer mappings over arrays when you don’t need iteration  
 - Limit the maximum size of arrays  
 - Avoid loops that grow indefinitely  
+
+### Conditional Logic Tips
+
+Keep conditions clear and simple.  
+
+Complex nested if statements can make the code harder to read and more error-prone.
