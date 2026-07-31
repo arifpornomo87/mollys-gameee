@@ -196,3 +196,16 @@ Most NFTs store a `tokenURI` that points to a JSON file containing:
 - attributes  
 
 This metadata can live on IPFS or a server.
+
+### ERC721 Core Functions
+
+Important functions so far:
+
+- `ownerOf`
+- `balanceOf`
+- `transfer` / `transferFrom`
+- `approve`
+- `getApproved`
+- `tokenURI`
+
+These form the foundation of most NFT contracts.
