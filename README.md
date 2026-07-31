@@ -209,3 +209,15 @@ Important functions so far:
 - `tokenURI`
 
 These form the foundation of most NFT contracts.
+
+### NFT Learning Summary
+
+You now understand the core of ERC721:
+
+- Unique token IDs  
+- Ownership tracking  
+- Transfers and approvals  
+- Metadata with tokenURI  
+- Burning tokens  
+
+This is a solid foundation for building NFT projects on Base.
