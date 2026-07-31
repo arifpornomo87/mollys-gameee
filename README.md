@@ -245,3 +245,10 @@ View functions are free to call and very helpful for:
 - Users checking information  
 
 Always try to expose useful data with view functions.
+
+### Batch Mint Considerations
+
+- More convenient for users  
+- Uses more gas as quantity increases  
+- Always enforce a maximum per transaction  
+- Check both payment and max supply carefully  
