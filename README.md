@@ -229,3 +229,9 @@ This is a solid foundation for building NFT projects on Base.
 - Allow the owner to update the price
 - Emit events on mint
 - Consider adding a pause function later
+
+### Why Pause Is Important
+
+A pause function is a simple but powerful safety mechanism.  
+
+It allows the owner to stop minting or other actions if something unexpected happens.
