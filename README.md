@@ -185,3 +185,14 @@ This knowledge is essential for building or interacting with almost any project 
 - **ERC721** → non-fungible (each token is unique)  
 
 Both standards are widely used on Base.
+
+### NFT Metadata Basics
+
+Most NFTs store a `tokenURI` that points to a JSON file containing:
+
+- name  
+- description  
+- image  
+- attributes  
+
+This metadata can live on IPFS or a server.
