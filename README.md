@@ -235,3 +235,13 @@ This is a solid foundation for building NFT projects on Base.
 A pause function is a simple but powerful safety mechanism.  
 
 It allows the owner to stop minting or other actions if something unexpected happens.
+
+### Useful View Functions
+
+View functions are free to call and very helpful for:
+
+- Frontends  
+- Explorers  
+- Users checking information  
+
+Always try to expose useful data with view functions.
