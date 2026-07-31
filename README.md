@@ -178,3 +178,10 @@ These help wallets display the token correctly.
 You now understand the core structure of a fungible token.
 
 This knowledge is essential for building or interacting with almost any project on Base.
+
+### ERC20 vs ERC721
+
+- **ERC20** → fungible (all tokens are the same)  
+- **ERC721** → non-fungible (each token is unique)  
+
+Both standards are widely used on Base.
