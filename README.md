@@ -221,3 +221,11 @@ You now understand the core of ERC721:
 - Burning tokens  
 
 This is a solid foundation for building NFT projects on Base.
+
+### Paid Mint Best Practices
+
+- Always check `msg.value`
+- Add a max supply
+- Allow the owner to update the price
+- Emit events on mint
+- Consider adding a pause function later
