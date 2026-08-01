@@ -272,3 +272,9 @@ Saving the original minter and mint timestamp helps with:
 - Rarity  
 - Future utility (boosts, rewards, etc.)  
 - Transparency for collectors
+
+### Dynamic NFT Idea
+
+By adding levels, attributes, or experience, the NFT can evolve over time.
+
+This is a common pattern for gaming and utility NFTs on Base.
