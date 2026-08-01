@@ -252,3 +252,14 @@ Always try to expose useful data with view functions.
 - Uses more gas as quantity increases  
 - Always enforce a maximum per transaction  
 - Check both payment and max supply carefully  
+
+### Useful NFT Data to Store
+
+Besides ownership, it is common to store:
+
+- Mint timestamp  
+- Original minter  
+- Token URI  
+- Optional attributes or levels  
+
+This makes the NFT more useful and transparent.
