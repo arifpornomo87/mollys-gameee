@@ -363,3 +363,14 @@ Staking NFTs is a very common mechanic used for:
 - In-game benefits  
 
 It is a great next step after basic NFT functionality.
+
+### Staking Rewards Summary
+
+You can reward NFT holders based on:
+
+- Time staked  
+- Token level / rarity  
+- Number of NFTs staked  
+- Special attributes  
+
+This creates strong incentives to hold and stake the NFTs.
