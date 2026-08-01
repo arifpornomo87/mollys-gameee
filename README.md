@@ -290,3 +290,10 @@ Adding levels and experience opens the door to:
 - Utility in other contracts  
 
 This makes NFTs much more interactive.
+
+### Metadata Best Practices
+
+- Use a consistent baseURI  
+- Prefer IPFS for decentralization  
+- Keep metadata immutable when possible  
+- Include name, description, image and attributes  
