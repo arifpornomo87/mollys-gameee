@@ -318,3 +318,15 @@ Just like tokens have metadata, collections usually define:
 - Image / banner (off-chain)  
 
 These help with discoverability on marketplaces.
+
+### Input Validation Best Practices
+
+Always validate:
+
+- Zero addresses  
+- Token existence  
+- Ownership  
+- Allowances / approvals  
+- Array bounds  
+
+Good validation makes contracts much safer.
