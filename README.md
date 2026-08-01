@@ -352,3 +352,14 @@ By adding statuses you can control:
 - Whether it is currently staked  
 
 This adds a lot of flexibility to the NFT.
+
+### NFT Staking Basics
+
+Staking NFTs is a very common mechanic used for:
+
+- Earning rewards  
+- Access to special features  
+- Governance power  
+- In-game benefits  
+
+It is a great next step after basic NFT functionality.
