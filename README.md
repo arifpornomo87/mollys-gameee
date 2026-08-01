@@ -374,3 +374,15 @@ You can reward NFT holders based on:
 - Special attributes  
 
 This creates strong incentives to hold and stake the NFTs.
+
+### Flexible Reward Systems
+
+You can make rewards depend on:
+
+- Time staked  
+- NFT level  
+- Rarity  
+- Number of staked NFTs  
+- Special events or seasons  
+
+This keeps the system interesting over time.
