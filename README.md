@@ -342,3 +342,13 @@ Common states for NFTs:
 - In game / in use  
 
 Using an enum makes the code clearer and safer.
+
+### Status Management Summary
+
+By adding statuses you can control:
+
+- Whether a token can be transferred  
+- Whether it can be used in a game  
+- Whether it is currently staked  
+
+This adds a lot of flexibility to the NFT.
