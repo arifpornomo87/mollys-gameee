@@ -330,3 +330,15 @@ Always validate:
 - Array bounds  
 
 Good validation makes contracts much safer.
+
+### Useful Token States
+
+Common states for NFTs:
+
+- Normal  
+- Locked  
+- Staked  
+- Listed for sale  
+- In game / in use  
+
+Using an enum makes the code clearer and safer.
