@@ -297,3 +297,13 @@ This makes NFTs much more interactive.
 - Prefer IPFS for decentralization  
 - Keep metadata immutable when possible  
 - Include name, description, image and attributes  
+
+### Improving Standard Compliance
+
+To make the NFT more compatible with the ecosystem, it is recommended to implement:
+
+- ERC165  
+- ERC721  
+- ERC721Metadata  
+
+This makes the collection work better with wallets and marketplaces.
