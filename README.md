@@ -263,3 +263,12 @@ Besides ownership, it is common to store:
 - Optional attributes or levels  
 
 This makes the NFT more useful and transparent.
+
+### Tracking Provenance
+
+Saving the original minter and mint timestamp helps with:
+
+- Provenance  
+- Rarity  
+- Future utility (boosts, rewards, etc.)  
+- Transparency for collectors
