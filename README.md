@@ -307,3 +307,14 @@ To make the NFT more compatible with the ecosystem, it is recommended to impleme
 - ERC721Metadata  
 
 This makes the collection work better with wallets and marketplaces.
+
+### Collection Metadata
+
+Just like tokens have metadata, collections usually define:
+
+- Name  
+- Symbol  
+- Description (off-chain)  
+- Image / banner (off-chain)  
+
+These help with discoverability on marketplaces.
