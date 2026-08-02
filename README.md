@@ -409,3 +409,11 @@ Good staking systems usually combine:
 - Clear and transparent rules  
 
 This encourages long-term participation.
+
+### Why Limit Staked NFTs
+
+Setting a maximum number of staked NFTs per user can help:
+
+- Prevent whales from dominating rewards  
+- Encourage wider participation  
+- Balance the economy of the project  
