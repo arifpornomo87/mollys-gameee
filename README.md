@@ -428,3 +428,15 @@ When designing contracts, think about what the frontend will need:
 - Token stats  
 
 Adding the right view functions and storage makes integration much easier.
+
+### Useful Global Statistics
+
+Interesting stats to expose:
+
+- Total minted  
+- Max supply  
+- Currently staked  
+- Total rewards distributed  
+- Number of unique holders  
+
+These help with transparency and dashboards.
