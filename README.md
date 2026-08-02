@@ -398,3 +398,14 @@ Useful rules to add to staking systems:
 - Maximum number of staked NFTs per user  
 
 These help balance the system.
+
+### Designing Good Staking Incentives
+
+Good staking systems usually combine:
+
+- Rewards for long-term holding  
+- Penalties for early exits  
+- Extra boosts for higher level / rarer NFTs  
+- Clear and transparent rules  
+
+This encourages long-term participation.
