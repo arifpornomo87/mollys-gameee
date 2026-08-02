@@ -386,3 +386,15 @@ You can make rewards depend on:
 - Special events or seasons  
 
 This keeps the system interesting over time.
+
+### Staking Rules Summary
+
+Useful rules to add to staking systems:
+
+- Minimum staking time  
+- Lock periods  
+- Early unstake penalties  
+- Reward multipliers  
+- Maximum number of staked NFTs per user  
+
+These help balance the system.
