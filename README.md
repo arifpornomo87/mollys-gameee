@@ -417,3 +417,14 @@ Setting a maximum number of staked NFTs per user can help:
 - Prevent whales from dominating rewards  
 - Encourage wider participation  
 - Balance the economy of the project  
+
+### Frontend Friendly Design
+
+When designing contracts, think about what the frontend will need:
+
+- Easy way to get user balances  
+- List of staked tokens  
+- Pending rewards  
+- Token stats  
+
+Adding the right view functions and storage makes integration much easier.
