@@ -472,3 +472,6 @@ Having these options makes the contract safer to manage.
 
 These habits already prevent many common issues.
 
+### Project Progress Note
+
+This repository is documenting the progressive construction of a more complete NFT system on Base, starting from very simple examples and gradually adding real utility features.
