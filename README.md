@@ -460,3 +460,15 @@ Useful emergency features:
 - Withdraw funds  
 
 Having these options makes the contract safer to manage.
+
+### Basic Security Habits
+
+- Use `require` generously  
+- Protect sensitive functions with modifiers  
+- Follow Checks-Effects-Interactions  
+- Prefer `call` over `transfer`  
+- Add pause functionality  
+- Emit events for important changes  
+
+These habits already prevent many common issues.
+
