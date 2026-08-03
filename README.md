@@ -440,3 +440,12 @@ Interesting stats to expose:
 - Number of unique holders  
 
 These help with transparency and dashboards.
+
+### Transparency in Rewards
+
+Tracking total rewards distributed helps with:
+
+- Trust  
+- Analytics  
+- Understanding the economy of the project  
+- Showing the value generated for holders  
