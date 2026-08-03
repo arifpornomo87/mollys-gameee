@@ -485,3 +485,15 @@ When designing breeding you should think about:
 - Genetic / attribute inheritance  
 - Supply control  
 - Cooldowns to avoid inflation  
+
+### Balancing Breeding
+
+To keep the economy healthy you can combine:
+
+- Breeding cost  
+- Cooldowns  
+- Level requirements  
+- Maximum supply  
+- Burning of parents (optional)  
+
+Good balancing prevents inflation of the collection.
