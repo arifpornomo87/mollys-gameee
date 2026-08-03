@@ -475,3 +475,13 @@ These habits already prevent many common issues.
 ### Project Progress Note
 
 This repository is documenting the progressive construction of a more complete NFT system on Base, starting from very simple examples and gradually adding real utility features.
+
+### Breeding System Considerations
+
+When designing breeding you should think about:
+
+- Requirements (level, rarity, cooldown)  
+- Cost (ETH or tokens)  
+- Genetic / attribute inheritance  
+- Supply control  
+- Cooldowns to avoid inflation  
