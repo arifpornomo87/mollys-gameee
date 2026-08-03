@@ -449,3 +449,14 @@ Tracking total rewards distributed helps with:
 - Analytics  
 - Understanding the economy of the project  
 - Showing the value generated for holders  
+
+### Emergency Controls Summary
+
+Useful emergency features:
+
+- Pause minting  
+- Pause staking  
+- Pause transfers (in extreme cases)  
+- Withdraw funds  
+
+Having these options makes the contract safer to manage.
