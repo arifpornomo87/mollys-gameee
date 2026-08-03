@@ -497,3 +497,14 @@ To keep the economy healthy you can combine:
 - Burning of parents (optional)  
 
 Good balancing prevents inflation of the collection.
+
+### On-chain Attributes
+
+Storing attributes on-chain allows:
+
+- Game logic based on stats  
+- Rarity calculation  
+- Dynamic metadata  
+- Verifiable traits  
+
+Note: For real randomness it is better to use Chainlink VRF.
