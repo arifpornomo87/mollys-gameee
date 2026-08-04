@@ -558,3 +558,13 @@ This is a foundational pattern for NFT trading.
 - Clearly communicate the fee to users  
 - Decide where the fee goes (treasury, rewards, burn, etc.)  
 - Emit events for transparency  
+
+### Marketplace Events Summary
+
+Important events for a marketplace:
+
+- `TokenListed`  
+- `ListingCancelled`  
+- `TokenSold`  
+
+These events make it easy for frontends and indexers to track activity.
