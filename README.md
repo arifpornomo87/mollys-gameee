@@ -520,3 +520,14 @@ Attributes can be used for:
 - Leaderboards  
 
 They add depth to the NFT system.
+
+### Rarity Systems
+
+Rarity can be determined by:
+
+- On-chain attributes  
+- Power score  
+- Visual traits (usually off-chain)  
+- Special events or limited editions  
+
+On-chain rarity is transparent and verifiable.
