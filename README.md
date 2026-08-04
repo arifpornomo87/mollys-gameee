@@ -540,3 +540,14 @@ Common solutions:
 - Keep only Top 10 / Top 100 on-chain
 - Calculate scores off-chain and verify on-chain
 - Use events for indexing
+### Marketplace Basics
+
+A simple marketplace usually needs:
+
+- Listing function  
+- Cancel function  
+- Buy function  
+- Events for listings and sales  
+- Handling of payments and ownership transfer  
+
+This is a foundational pattern for NFT trading.
