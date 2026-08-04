@@ -531,3 +531,12 @@ Rarity can be determined by:
 - Special events or limited editions  
 
 On-chain rarity is transparent and verifiable.
+
+### Leaderboard Considerations
+
+On-chain leaderboards are possible but expensive when many users are involved.
+
+Common solutions:
+- Keep only Top 10 / Top 100 on-chain
+- Calculate scores off-chain and verify on-chain
+- Use events for indexing
