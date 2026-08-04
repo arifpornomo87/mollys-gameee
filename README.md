@@ -568,3 +568,10 @@ Important events for a marketplace:
 - `TokenSold`  
 
 These events make it easy for frontends and indexers to track activity.
+
+### Offers vs Listings
+
+- **Listings** → seller sets the price  
+- **Offers** → buyer proposes a price  
+
+Supporting both makes the marketplace more flexible and user-friendly.
