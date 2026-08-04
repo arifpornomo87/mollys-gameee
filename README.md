@@ -590,3 +590,9 @@ Current marketplace features:
 - Marketplace fee  
 
 This is already a solid foundation for a basic NFT marketplace.
+
+### Royalties on NFTs
+
+Royalties allow creators to receive a percentage of secondary sales.
+
+This is a very important feature for sustainable NFT projects.
