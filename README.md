@@ -508,3 +508,15 @@ Storing attributes on-chain allows:
 - Verifiable traits  
 
 Note: For real randomness it is better to use Chainlink VRF.
+
+### Using Attributes in Game Logic
+
+Attributes can be used for:
+
+- Combat power  
+- Staking multipliers  
+- Breeding requirements  
+- Access to special features  
+- Leaderboards  
+
+They add depth to the NFT system.
