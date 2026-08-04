@@ -551,3 +551,10 @@ A simple marketplace usually needs:
 - Handling of payments and ownership transfer  
 
 This is a foundational pattern for NFT trading.
+
+### Marketplace Fee Considerations
+
+- Keep fees reasonable (usually 2-5%)  
+- Clearly communicate the fee to users  
+- Decide where the fee goes (treasury, rewards, burn, etc.)  
+- Emit events for transparency  
