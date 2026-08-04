@@ -1,4 +1,5 @@
 
+
 # Starting with Base
 
 I'm using this repository to organize everything related to Base — from basic concepts to more advanced topics as I progress.
@@ -575,3 +576,17 @@ These events make it easy for frontends and indexers to track activity.
 - **Offers** → buyer proposes a price  
 
 Supporting both makes the marketplace more flexible and user-friendly.
+
+### Marketplace Features Summary
+
+Current marketplace features:
+
+- List NFT for sale  
+- Cancel listing  
+- Buy NFT  
+- Make offer  
+- Accept offer  
+- Cancel offer  
+- Marketplace fee  
+
+This is already a solid foundation for a basic NFT marketplace.
