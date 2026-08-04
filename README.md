@@ -596,3 +596,8 @@ This is already a solid foundation for a basic NFT marketplace.
 Royalties allow creators to receive a percentage of secondary sales.
 
 This is a very important feature for sustainable NFT projects.
+### Creator Earnings
+
+With royalties, creators can continue earning from secondary market activity.
+
+This is one of the main advantages of NFTs compared to traditional digital assets.
