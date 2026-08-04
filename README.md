@@ -601,3 +601,8 @@ This is a very important feature for sustainable NFT projects.
 With royalties, creators can continue earning from secondary market activity.
 
 This is one of the main advantages of NFTs compared to traditional digital assets.
+### Project Status
+
+This repository documents the step-by-step construction of a feature-rich NFT system on Base.
+
+It started from very basic concepts and has progressively evolved into a more complete project.
