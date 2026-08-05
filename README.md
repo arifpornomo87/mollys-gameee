@@ -617,3 +617,16 @@ OpenZeppelin’s `Ownable` already includes:
 - `renounceOwnership`  
 
 This saves time and reduces errors.
+
+### Useful OpenZeppelin Utilities
+
+Commonly used modules:
+
+- `Ownable`  
+- `Pausable`  
+- `ReentrancyGuard`  
+- `ERC721URIStorage`  
+- `ERC721Enumerable`  
+- `ERC2981` (royalties)  
+
+These cover most needs of an NFT project.
