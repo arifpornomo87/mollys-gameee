@@ -695,3 +695,13 @@ This increases excitement and allows generating traits after the mint.
 - Communicate the reveal date  
 - Prefer IPFS for metadata  
 - Avoid changing metadata after reveal (unless the project is designed to be dynamic)  
+
+### When to Use ERC721Enumerable
+
+Use it when:
+
+- You want an easy way to list tokens on-chain  
+- The collection size is not extremely large  
+- User experience is more important than gas optimization  
+
+Otherwise, event indexing is often enough.
