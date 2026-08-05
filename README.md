@@ -672,3 +672,10 @@ Common flow:
 2. Public mint phase  
 
 This is a very popular strategy for NFT launches.
+
+### Allowlist Methods Comparison
+
+- **Mapping** → simple but expensive for many users  
+- **Merkle Tree** → efficient and scalable  
+
+For most real launches, Merkle proofs are the better choice.
