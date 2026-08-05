@@ -639,3 +639,15 @@ Using ERC2981 from OpenZeppelin gives you:
 - Compatibility with major marketplaces  
 - Easy configuration  
 - Cleaner and safer code  
+
+### OpenZeppelin Migration Summary
+
+By switching to OpenZeppelin you gain:
+
+- Better security  
+- Standard compliance  
+- Cleaner code  
+- Easier maintenance  
+- Ready-made modules for royalties, pausing, ownership, etc.  
+
+This is the recommended path for production-ready contracts on Base.
