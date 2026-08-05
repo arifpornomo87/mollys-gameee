@@ -679,3 +679,12 @@ This is a very popular strategy for NFT launches.
 - **Merkle Tree** → efficient and scalable  
 
 For most real launches, Merkle proofs are the better choice.
+
+### Reveal Mechanics
+
+Many NFT projects use a two-step process:
+
+1. Mint with hidden metadata (placeholder image)  
+2. Reveal the real traits later  
+
+This increases excitement and allows generating traits after the mint.
