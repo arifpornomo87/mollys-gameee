@@ -742,3 +742,82 @@ function teamMint(address to, string memory uri) public onlyOwner {
     _safeMint(to, tokenId);
     _setTokenURI(tokenId, uri);
 }
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
+import "@openzeppelin/contracts/token/common/ERC2981.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/utils/Pausable.sol";
+import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
+
+contract AdvancedNFT is ERC721URIStorage, ERC2981, Ownable, Pausable, ReentrancyGuard {
+    uint256 public nextTokenId;
+    uint256 public mintPrice = 0.015 ether;
+    uint256 public maxSupply = 777;
+
+    bool public revealed = false;
+    string public hiddenURI;
+    string public baseTokenURI;
+
+    mapping(address => bool) public allowlist;
+    bool public allowlistOnly = true;
+
+    constructor() ERC721("Advanced NFT", "ADVNFT") Ownable(msg.sender) {
+        _setDefaultRoyalty(msg.sender, 500); // 5%
+    }
+
+    function mint(string memory uri) external payable whenNotPaused nonReentrant {
+        require(nextTokenId < maxSupply, "Max supply reached");
+        require(msg.value >= mintPrice, "Insufficient payment");
+        if (allowlistOnly) {
+            require(allowlist[msg.sender], "Not allowlisted");
+        }
+
+        uint256 tokenId = nextTokenId++;
+        _safeMint(msg.sender, tokenId);
+
+        if (revealed) {
+            _setTokenURI(tokenId, uri);
+        }
+    }
+
+    function setAllowlist(address user, bool status) external onlyOwner {
+        allowlist[user] = status;
+    }
+
+    function setAllowlistOnly(bool status) external onlyOwner {
+        allowlistOnly = status;
+    }
+
+    function setHiddenURI(string memory _hiddenURI) external onlyOwner {
+        hiddenURI = _hiddenURI;
+    }
+
+    function reveal(string memory _baseTokenURI) external onlyOwner {
+        revealed = true;
+        baseTokenURI = _baseTokenURI;
+    }
+
+    function tokenURI(uint256 tokenId) public view override returns (string memory) {
+        _requireOwned(tokenId);
+        if (!revealed) {
+            return hiddenURI;
+        }
+        return super.tokenURI(tokenId);
+    }
+
+    function supportsInterface(bytes4 interfaceId)
+        public
+        view
+        override(ERC721URIStorage, ERC2981)
+        returns (bool)
+    {
+        return super.supportsInterface(interfaceId);
+    }
+
+    function withdraw() external onlyOwner nonReentrant {
+        (bool success, ) = payable(owner()).call{value: address(this).balance}("");
+        require(success, "Withdraw failed");
+    }
+}
