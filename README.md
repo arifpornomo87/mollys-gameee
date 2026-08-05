@@ -688,3 +688,10 @@ Many NFT projects use a two-step process:
 2. Reveal the real traits later  
 
 This increases excitement and allows generating traits after the mint.
+
+### Reveal Best Practices
+
+- Use a clear placeholder image  
+- Communicate the reveal date  
+- Prefer IPFS for metadata  
+- Avoid changing metadata after reveal (unless the project is designed to be dynamic)  
