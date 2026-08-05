@@ -651,3 +651,15 @@ By switching to OpenZeppelin you gain:
 - Ready-made modules for royalties, pausing, ownership, etc.  
 
 This is the recommended path for production-ready contracts on Base.
+
+### Common Mint Restrictions
+
+Useful limits for minting:
+
+- Max supply  
+- Max per wallet  
+- Max per transaction  
+- Mint price  
+- Pause functionality  
+
+These help keep the mint fair and controlled.
