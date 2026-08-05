@@ -705,3 +705,12 @@ Use it when:
 - User experience is more important than gas optimization  
 
 Otherwise, event indexing is often enough.
+
+### Admin Mint vs Public Mint
+
+It is common to have both:
+
+- **Public mint** → for users  
+- **Admin/owner mint** → for team, marketing, vault, giveaways, etc.  
+
+Keeping them separate makes the contract clearer.
