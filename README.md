@@ -663,3 +663,12 @@ Useful limits for minting:
 - Pause functionality  
 
 These help keep the mint fair and controlled.
+
+### Allowlist vs Public Mint
+
+Common flow:
+
+1. Allowlist phase (early supporters)  
+2. Public mint phase  
+
+This is a very popular strategy for NFT launches.
