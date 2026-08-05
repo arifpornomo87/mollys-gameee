@@ -630,3 +630,12 @@ Commonly used modules:
 - `ERC2981` (royalties)  
 
 These cover most needs of an NFT project.
+
+### OpenZeppelin Royalties Summary
+
+Using ERC2981 from OpenZeppelin gives you:
+
+- Standard royalty support  
+- Compatibility with major marketplaces  
+- Easy configuration  
+- Cleaner and safer code  
