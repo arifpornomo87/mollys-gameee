@@ -714,3 +714,14 @@ It is common to have both:
 - **Admin/owner mint** → for team, marketing, vault, giveaways, etc.  
 
 Keeping them separate makes the contract clearer.
+
+### Mint Phase Strategy
+
+A common and effective strategy is:
+
+1. Closed  
+2. Allowlist / Whitelist  
+3. Public  
+4. (Optional) Free or bonus phase  
+
+This gives better control and a fairer launch.
