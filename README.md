@@ -937,3 +937,63 @@ contract FragmentNFT is ERC721URIStorage, Ownable, ReentrancyGuard {
         payable(owner()).transfer(address(this).balance);
     }
 }
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/utils/Base64.sol";
+import "@openzeppelin/contracts/utils/Strings.sol";
+
+contract OnChainSVGNFT is ERC721, Ownable {
+    using Strings for uint256;
+
+    uint256 public nextTokenId;
+    uint256 public maxSupply = 100;
+    uint256 public mintPrice = 0.01 ether;
+
+    mapping(uint256 => uint256) public tokenSeed;
+
+    constructor() ERC721("OnChain SVG NFT", "SVGNFT") Ownable(msg.sender) {}
+
+    function mint() external payable {
+        require(nextTokenId < maxSupply, "Max supply reached");
+        require(msg.value >= mintPrice, "Insufficient payment");
+
+        uint256 tokenId = nextTokenId++;
+        tokenSeed[tokenId] = uint256(keccak256(abi.encodePacked(block.timestamp, msg.sender, tokenId)));
+
+        _safeMint(msg.sender, tokenId);
+    }
+
+    function tokenURI(uint256 tokenId) public view override returns (string memory) {
+        _requireOwned(tokenId);
+
+        uint256 seed = tokenSeed[tokenId];
+        string memory color = _getColor(seed);
+        string memory svg = string(abi.encodePacked(
+            '<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400">',
+            '<rect width="400" height="400" fill="', color, '"/>',
+            '<text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="24">',
+            'Token #', tokenId.toString(),
+            '</text></svg>'
+        ));
+
+        string memory json = Base64.encode(bytes(string(abi.encodePacked(
+            '{"name":"SVG NFT #', tokenId.toString(),
+            '","description":"Fully on-chain SVG NFT",',
+            '"image":"data:image/svg+xml;base64,', Base64.encode(bytes(svg)), '"}'
+        ))));
+
+        return string(abi.encodePacked("data:application/json;base64,", json));
+    }
+
+    function _getColor(uint256 seed) internal pure returns (string memory) {
+        string[6] memory colors = ["#FF6B6B", "#4ECDC4", "#45B7D1", "#96CEB4", "#FFEAA7", "#DDA0DD"];
+        return colors[seed % 6];
+    }
+
+    function withdraw() external onlyOwner {
+        payable(owner()).transfer(address(this).balance);
+    }
+}
