@@ -1193,3 +1193,61 @@ contract GuildMarketplace is ReentrancyGuard {
         emit Cancelled(listingId);
     }
 }
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+contract GuildRaffle {
+    address public owner;
+    uint256 public ticketPrice;
+    uint256 public maxTickets;
+    address[] public players;
+    bool public isActive;
+    address public winner;
+
+    event TicketBought(address indexed player, uint256 ticketNumber);
+    event WinnerSelected(address indexed winner, uint256 prize);
+
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Not owner");
+        _;
+    }
+
+    constructor(uint256 _ticketPrice, uint256 _maxTickets) {
+        owner = msg.sender;
+        ticketPrice = _ticketPrice;
+        maxTickets = _maxTickets;
+        isActive = true;
+    }
+
+    function buyTicket() external payable {
+        require(isActive, "Raffle closed");
+        require(msg.value == ticketPrice, "Incorrect value");
+        require(players.length < maxTickets, "Sold out");
+
+        players.push(msg.sender);
+        emit TicketBought(msg.sender, players.length);
+    }
+
+    function drawWinner() external onlyOwner {
+        require(isActive, "Already drawn");
+        require(players.length > 0, "No players");
+
+        isActive = false;
+        uint256 randomIndex = uint256(keccak256(abi.encodePacked(block.timestamp, block.prevrandao, players.length))) % players.length;
+        winner = players[randomIndex];
+
+        uint256 prize = address(this).balance;
+        (bool success, ) = winner.call{value: prize}("");
+        require(success, "Transfer failed");
+
+        emit WinnerSelected(winner, prize);
+    }
+
+    function getPlayers() external view returns (address[] memory) {
+        return players;
+    }
+
+    function getPlayerCount() external view returns (uint256) {
+        return players.length;
+    }
+}
