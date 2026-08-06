@@ -821,3 +821,65 @@ contract AdvancedNFT is ERC721URIStorage, ERC2981, Ownable, Pausable, Reentrancy
         require(success, "Withdraw failed");
     }
 }
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
+
+contract GovernanceNFT is ERC721URIStorage, Ownable, ReentrancyGuard {
+    uint256 public nextTokenId;
+    uint256 public maxSupply = 1000;
+    uint256 public mintPrice = 0.05 ether;
+
+    mapping(uint256 => uint256) public votingPower;
+    mapping(address => uint256) public totalVotingPower;
+
+    constructor() ERC721("Governance NFT", "GOVNFT") Ownable(msg.sender) {}
+
+    function mint(string memory uri) external payable nonReentrant {
+        require(nextTokenId < maxSupply, "Max supply reached");
+        require(msg.value >= mintPrice, "Insufficient payment");
+
+        uint256 tokenId = nextTokenId++;
+        uint256 power = 1; // base power
+
+        votingPower[tokenId] = power;
+        totalVotingPower[msg.sender] += power;
+
+        _safeMint(msg.sender, tokenId);
+        _setTokenURI(tokenId, uri);
+    }
+
+    function _update(address to, uint256 tokenId, address auth)
+        internal
+        override
+        returns (address)
+    {
+        address from = _ownerOf(tokenId);
+
+        if (from != address(0)) {
+            totalVotingPower[from] -= votingPower[tokenId];
+        }
+        if (to != address(0)) {
+            totalVotingPower[to] += votingPower[tokenId];
+        }
+
+        return super._update(to, tokenId, auth);
+    }
+
+    function getVotingPower(address user) external view returns (uint256) {
+        return totalVotingPower[user];
+    }
+
+    function increasePower(uint256 tokenId, uint256 amount) external onlyOwner {
+        address owner_ = ownerOf(tokenId);
+        votingPower[tokenId] += amount;
+        totalVotingPower[owner_] += amount;
+    }
+
+    function withdraw() external onlyOwner {
+        payable(owner()).transfer(address(this).balance);
+    }
+}
