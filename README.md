@@ -1120,3 +1120,76 @@ contract GuildTreasury {
         return address(this).balance;
     }
 }
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
+import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+
+contract GuildMarketplace is ReentrancyGuard {
+    struct Listing {
+        address seller;
+        address nftContract;
+        uint256 tokenId;
+        uint256 price;
+        bool active;
+    }
+
+    mapping(uint256 => Listing) public listings;
+    uint256 public listingCount;
+    uint256 public feePercent = 250; // 2.5%
+    address public feeReceiver;
+
+    event Listed(uint256 indexed listingId, address seller, address nft, uint256 tokenId, uint256 price);
+    event Sold(uint256 indexed listingId, address buyer, uint256 price);
+    event Cancelled(uint256 indexed listingId);
+
+    constructor(address _feeReceiver) {
+        feeReceiver = _feeReceiver;
+    }
+
+    function listNFT(address nftContract, uint256 tokenId, uint256 price) external {
+        require(price > 0, "Price must be > 0");
+        IERC721(nftContract).transferFrom(msg.sender, address(this), tokenId);
+
+        uint256 id = listingCount++;
+        listings[id] = Listing(msg.sender, nftContract, tokenId, price, true);
+
+        emit Listed(id, msg.sender, nftContract, tokenId, price);
+    }
+
+    function buyNFT(uint256 listingId) external payable nonReentrant {
+        Listing storage listing = listings[listingId];
+        require(listing.active, "Not active");
+        require(msg.value >= listing.price, "Insufficient payment");
+
+        listing.active = false;
+
+        uint256 fee = (listing.price * feePercent) / 10000;
+        uint256 sellerAmount = listing.price - fee;
+
+        (bool success1, ) = listing.seller.call{value: sellerAmount}("");
+        require(success1, "Seller transfer failed");
+        (bool success2, ) = feeReceiver.call{value: fee}("");
+        require(success2, "Fee transfer failed");
+
+        // Refund excess
+        if (msg.value > listing.price) {
+            (bool success3, ) = msg.sender.call{value: msg.value - listing.price}("");
+            require(success3, "Refund failed");
+        }
+
+        IERC721(listing.nftContract).transferFrom(address(this), msg.sender, listing.tokenId);
+        emit Sold(listingId, msg.sender, listing.price);
+    }
+
+    function cancelListing(uint256 listingId) external {
+        Listing storage listing = listings[listingId];
+        require(listing.seller == msg.sender, "Not seller");
+        require(listing.active, "Not active");
+
+        listing.active = false;
+        IERC721(listing.nftContract).transferFrom(address(this), msg.sender, listing.tokenId);
+        emit Cancelled(listingId);
+    }
+}
