@@ -1251,3 +1251,64 @@ contract GuildRaffle {
         return players.length;
     }
 }
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+contract GuildPaymentSplitter {
+    address[] public payees;
+    mapping(address => uint256) public shares;
+    mapping(address => uint256) public released;
+    uint256 public totalShares;
+    uint256 public totalReleased;
+
+    event PayeeAdded(address account, uint256 shares);
+    event PaymentReleased(address to, uint256 amount);
+    event PaymentReceived(address from, uint256 amount);
+
+    constructor(address[] memory _payees, uint256[] memory _shares) {
+        require(_payees.length == _shares.length, "Length mismatch");
+        require(_payees.length > 0, "No payees");
+
+        for (uint256 i = 0; i < _payees.length; i++) {
+            _addPayee(_payees[i], _shares[i]);
+        }
+    }
+
+    receive() external payable {
+        emit PaymentReceived(msg.sender, msg.value);
+    }
+
+    function release(address account) public {
+        require(shares[account] > 0, "No shares");
+        uint256 totalReceived = address(this).balance + totalReleased;
+        uint256 payment = (totalReceived * shares[account]) / totalShares - released[account];
+        require(payment > 0, "No payment due");
+
+        released[account] += payment;
+        totalReleased += payment;
+        (bool success, ) = account.call{value: payment}("");
+        require(success, "Transfer failed");
+        emit PaymentReleased(account, payment);
+    }
+
+    function releaseAll() external {
+        for (uint256 i = 0; i < payees.length; i++) {
+            release(payees[i]);
+        }
+    }
+
+    function _addPayee(address account, uint256 share) private {
+        require(account != address(0), "Invalid address");
+        require(share > 0, "Shares must be > 0");
+        require(shares[account] == 0, "Already has shares");
+
+        payees.push(account);
+        shares[account] = share;
+        totalShares += share;
+        emit PayeeAdded(account, share);
+    }
+
+    function getPayees() external view returns (address[] memory) {
+        return payees;
+    }
+}
