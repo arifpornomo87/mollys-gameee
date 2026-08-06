@@ -997,3 +997,67 @@ contract OnChainSVGNFT is ERC721, Ownable {
         payable(owner()).transfer(address(this).balance);
     }
 }
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
+
+contract CollaborativeNFT is ERC721URIStorage, Ownable, ReentrancyGuard {
+    uint256 public nextTokenId;
+    uint256 public maxSupply = 50;
+    uint256 public mintPrice = 0.1 ether;
+
+    mapping(uint256 => address[]) public coOwners;
+    mapping(uint256 => mapping(address => bool)) public isCoOwner;
+    mapping(uint256 => uint256) public approvalCount;
+    mapping(uint256 => mapping(address => bool)) public hasApproved;
+
+    constructor() ERC721("Collaborative NFT", "COOP") Ownable(msg.sender) {}
+
+    function mint(string memory uri, address[] memory initialCoOwners) external payable nonReentrant {
+        require(nextTokenId < maxSupply, "Max supply reached");
+        require(msg.value >= mintPrice, "Insufficient payment");
+        require(initialCoOwners.length >= 2, "Need at least 2 co-owners");
+
+        uint256 tokenId = nextTokenId++;
+        _safeMint(msg.sender, tokenId);
+        _setTokenURI(tokenId, uri);
+
+        for (uint256 i = 0; i < initialCoOwners.length; i++) {
+            address coOwner = initialCoOwners[i];
+            coOwners[tokenId].push(coOwner);
+            isCoOwner[tokenId][coOwner] = true;
+        }
+    }
+
+    function proposeTransfer(uint256 tokenId) external {
+        require(isCoOwner[tokenId][msg.sender], "Not a co-owner");
+        require(!hasApproved[tokenId][msg.sender], "Already approved");
+
+        hasApproved[tokenId][msg.sender] = true;
+        approvalCount[tokenId]++;
+    }
+
+    function executeTransfer(uint256 tokenId, address to) external nonReentrant {
+        require(isCoOwner[tokenId][msg.sender], "Not a co-owner");
+        require(approvalCount[tokenId] >= coOwners[tokenId].length, "Not enough approvals");
+
+        // Reset approvals
+        for (uint256 i = 0; i < coOwners[tokenId].length; i++) {
+            hasApproved[tokenId][coOwners[tokenId][i]] = false;
+        }
+        approvalCount[tokenId] = 0;
+
+        _transfer(ownerOf(tokenId), to, tokenId);
+    }
+
+    function getCoOwners(uint256 tokenId) external view returns (address[] memory) {
+        return coOwners[tokenId];
+    }
+
+    function withdraw() external onlyOwner {
+        payable(owner()).transfer(address(this).balance);
+    }
+}
