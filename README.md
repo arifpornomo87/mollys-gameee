@@ -883,3 +883,57 @@ contract GovernanceNFT is ERC721URIStorage, Ownable, ReentrancyGuard {
         payable(owner()).transfer(address(this).balance);
     }
 }
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
+
+contract FragmentNFT is ERC721URIStorage, Ownable, ReentrancyGuard {
+    uint256 public nextTokenId;
+    uint256 public maxSupply = 200;
+    uint256 public mintPrice = 0.03 ether;
+    uint256 public fragmentsNeeded = 5;
+
+    mapping(address => uint256) public fragments;
+    mapping(uint256 => bool) public isFragmented;
+
+    constructor() ERC721("Fragment NFT", "FRAG") Ownable(msg.sender) {}
+
+    function mint(string memory uri) external payable nonReentrant {
+        require(nextTokenId < maxSupply, "Max supply reached");
+        require(msg.value >= mintPrice, "Insufficient payment");
+
+        uint256 tokenId = nextTokenId++;
+        _safeMint(msg.sender, tokenId);
+        _setTokenURI(tokenId, uri);
+    }
+
+    function fragment(uint256 tokenId) external {
+        require(ownerOf(tokenId) == msg.sender, "Not owner");
+        require(!isFragmented[tokenId], "Already fragmented");
+
+        isFragmented[tokenId] = true;
+        _burn(tokenId);
+        fragments[msg.sender] += 1;
+    }
+
+    function redeem(string memory uri) external nonReentrant {
+        require(fragments[msg.sender] >= fragmentsNeeded, "Not enough fragments");
+
+        fragments[msg.sender] -= fragmentsNeeded;
+
+        uint256 tokenId = nextTokenId++;
+        _safeMint(msg.sender, tokenId);
+        _setTokenURI(tokenId, uri);
+    }
+
+    function getFragments(address user) external view returns (uint256) {
+        return fragments[user];
+    }
+
+    function withdraw() external onlyOwner {
+        payable(owner()).transfer(address(this).balance);
+    }
+}
