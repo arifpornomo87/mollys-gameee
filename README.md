@@ -1312,3 +1312,61 @@ contract GuildPaymentSplitter {
         return payees;
     }
 }
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+contract GuildTipJar {
+    address public owner;
+    address public beneficiary;
+    uint256 public goal;
+    uint256 public totalRaised;
+    bool public goalReached;
+
+    mapping(address => uint256) public contributions;
+
+    event Tipped(address indexed from, uint256 amount);
+    event GoalReached(uint256 total);
+    event Withdrawn(uint256 amount);
+
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Not owner");
+        _;
+    }
+
+    constructor(address _beneficiary, uint256 _goal) {
+        owner = msg.sender;
+        beneficiary = _beneficiary;
+        goal = _goal;
+    }
+
+    function tip() external payable {
+        require(msg.value > 0, "Must send ETH");
+        require(!goalReached, "Goal already reached");
+
+        contributions[msg.sender] += msg.value;
+        totalRaised += msg.value;
+
+        emit Tipped(msg.sender, msg.value);
+
+        if (totalRaised >= goal) {
+            goalReached = true;
+            emit GoalReached(totalRaised);
+        }
+    }
+
+    function withdraw() external onlyOwner {
+        require(goalReached, "Goal not reached yet");
+        uint256 amount = address(this).balance;
+        (bool success, ) = beneficiary.call{value: amount}("");
+        require(success, "Transfer failed");
+        emit Withdrawn(amount);
+    }
+
+    function changeBeneficiary(address newBeneficiary) external onlyOwner {
+        beneficiary = newBeneficiary;
+    }
+
+    function getProgress() external view returns (uint256 raised, uint256 target, bool reached) {
+        return (totalRaised, goal, goalReached);
+    }
+}
