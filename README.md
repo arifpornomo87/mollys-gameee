@@ -1370,3 +1370,65 @@ contract GuildTipJar {
         return (totalRaised, goal, goalReached);
     }
 }
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+contract GuildCheckIn {
+    address public owner;
+    uint256 public eventId;
+    
+    struct Event {
+        string name;
+        uint256 startTime;
+        uint256 endTime;
+        bool active;
+        mapping(address => bool) attended;
+        uint256 attendeeCount;
+    }
+
+    mapping(uint256 => Event) public events;
+
+    event EventCreated(uint256 indexed id, string name, uint256 start, uint256 end);
+    event CheckedIn(uint256 indexed eventId, address indexed user);
+
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Not owner");
+        _;
+    }
+
+    constructor() {
+        owner = msg.sender;
+    }
+
+    function createEvent(string calldata name, uint256 startTime, uint256 endTime) external onlyOwner returns (uint256) {
+        require(endTime > startTime, "Invalid time");
+        uint256 id = eventId++;
+        Event storage e = events[id];
+        e.name = name;
+        e.startTime = startTime;
+        e.endTime = endTime;
+        e.active = true;
+
+        emit EventCreated(id, name, startTime, endTime);
+        return id;
+    }
+
+    function checkIn(uint256 id) external {
+        Event storage e = events[id];
+        require(e.active, "Event not active");
+        require(block.timestamp >= e.startTime && block.timestamp <= e.endTime, "Not in time window");
+        require(!e.attended[msg.sender], "Already checked in");
+
+        e.attended[msg.sender] = true;
+        e.attendeeCount++;
+        emit CheckedIn(id, msg.sender);
+    }
+
+    function hasAttended(uint256 id, address user) external view returns (bool) {
+        return events[id].attended[user];
+    }
+
+    function closeEvent(uint256 id) external onlyOwner {
+        events[id].active = false;
+    }
+}
