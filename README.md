@@ -34,7 +34,7 @@ Understanding these helps write more efficient contracts.
 
 Events allow applications to react to what happens on-chain without constantly reading the contract state.
 
-They are also cheaper than storing extra data.
+They are also cheaper than storing extra data. Useful.
 
 ### Understanding Constructors
 
